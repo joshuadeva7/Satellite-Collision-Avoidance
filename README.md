@@ -32,8 +32,7 @@ This project is released under the [MIT License](LICENSE). See the `LICENSE` fil
 
 ---
 
-**Author**: [Your Name]  
-Affiliation: Georgia Institute of Technology  
+**Author**: [Joshua Devasahayam]   
 Challenge Project #: 225 (MathWorks Simulink Challenge Project Hub)
 
 
