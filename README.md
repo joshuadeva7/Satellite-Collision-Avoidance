@@ -32,7 +32,7 @@ This project is released under the [MIT License](LICENSE). See the `LICENSE` fil
 
 ---
 
-**Author**: [Joshua Devasahayam]   
+**Author**: Joshua Devasahayam   
 Challenge Project #: 225 (MathWorks Simulink Challenge Project Hub)
 
 
