@@ -91,3 +91,52 @@ debSGP4.Orbit.LineColor = "red";
 debSGP4.LabelFontColor = "red";
 
 play(sc)
+
+%% Satellite Conjuction
+
+%% Conjunction Detection
+
+% Check for Aerospace Toolbox license again (safety)
+assert(license('test','Aerospace_Toolbox'), 'Aerospace Toolbox is required for conjunction detection.');
+
+% Create conjunction finder
+finder = satelliteConjunctions(sc);
+
+% Add the Iridium satellite (main object of interest)
+add(finder, satSGP4);
+
+% Add the manually generated debris
+% Loop through all children in the scenario to find debris (by name)
+for obj = sc.Children
+    if contains(obj.Name, "Debris_")
+        add(finder, obj);
+    end
+end
+
+% Also add the other SGP4 debris satellite
+add(finder, debSGP4);
+
+% Configure detection thresholds (optional)
+finder.DistanceThreshold = 1000;  % meters
+finder.CollisionProbabilityThreshold = 1e-10;  % very conservative
+
+% Run the analysis
+conjs = run(finder);
+
+% Display results
+if isempty(conjs)
+    disp("✅ No conjunctions detected.");
+else
+    disp("⚠️ Conjunctions detected:");
+    disp(conjs);
+
+    % Optionally format each conjunction
+    for i = 1:height(conjs)
+        fprintf("\nConjunction %d:\n", i);
+        fprintf("  Between: %s and %s\n", ...
+            conjs.Satellite1Name(i), conjs.Satellite2Name(i));
+        fprintf("  Time of Closest Approach: %s\n", conjs.TimeOfClosestApproach(i));
+        fprintf("  Closest Approach Distance: %.2f m\n", conjs.ClosestApproachDistance(i));
+    end
+end
+
