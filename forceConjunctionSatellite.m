@@ -30,7 +30,7 @@ ta   = coe(6);
 % Offset the true anomaly to shift position along the orbit
 ta_forced = ta + offset;
 
-fprintf("\n📌 Forced conjunction debris created with true anomaly offset: %.2f deg\n", offset);
+fprintf("\n Forced conjunction debris created with true anomaly offset: %.2f deg\n", offset);
 
 % Add debris to scenario
 forcedDebris = satellite(sc, ...
@@ -42,6 +42,6 @@ forcedDebris.MarkerColor = "red";
 forcedDebris.Orbit.LineColor = "red";
 forcedDebris.LabelFontColor = "red";
 
-fprintf("✅ Forced debris satellite added: %s\n", forcedDebris.Name);
+fprintf(" Forced debris satellite added: %s\n", forcedDebris.Name);
 
 end

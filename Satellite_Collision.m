@@ -101,7 +101,7 @@ debSGP4.LabelFontColor = "red";
 assert(license('test','Aerospace_Toolbox'), 'Aerospace Toolbox is required for conjunction detection.');
 
 % Identify your main satellite (the Iridium)
-% ✅ Combine all debris + extra SGP4 debris
+% Combine all debris + extra SGP4 debris
 mainSat = satSGP4;
 targets = [debrisList{:}, debSGP4];
 
@@ -119,7 +119,7 @@ targets = [debrisList{:}, debSGP4, forcedDebris];
 conjs = findConjunctions(sc, satSGP4, targets, 1000);
 
 if ~isempty(conjs)
-    fprintf("\n✅ Forced conjunction detected!\n");
+    fprintf("\n Forced conjunction detected!\n");
 
     % Plan an avoidance maneuver ~30 min before TCA
     tCA = conjs.TimeOfClosestApproach(1);
@@ -132,23 +132,23 @@ if ~isempty(conjs)
     conjs_after = findConjunctions(sc, satAvoid, targets, 1000);
 
     if isempty(conjs_after)
-        fprintf("\n✅ Dodge success: no more conjunction!\n");
+        fprintf("\n Dodge success: no more conjunction!\n");
     else
-        fprintf("\n⚠️ Still at risk — try a different ΔV or maneuver timing!\n");
+        fprintf("\n Still at risk — try a different ΔV or maneuver timing!\n");
         disp(conjs_after);
     end
 
 else
-    fprintf("\n⚠️ No forced conjunction detected — adjust your offset.\n");
+    fprintf("\n No forced conjunction detected — adjust your offset.\n");
 end
 
 
 % Display results
 %{
 if isempty(conjs)
-    disp("✅ No conjunctions detected manually.");
+    disp(" No conjunctions detected manually.");
 else
-    disp("⚠️  Manual conjunctions found:");
+    disp("  Manual conjunctions found:");
     disp(conjs);
 end
 %}
@@ -167,9 +167,9 @@ newTargets = [debrisList{:}, debSGP4];
 conjs_after = findConjunctions(sc, satAvoid, newTargets, 1000);
 
 if isempty(conjs_after)
-    fprintf("\n✅ No conjunctions detected after avoidance maneuver.\n");
+    fprintf("\n No conjunctions detected after avoidance maneuver.\n");
 else
-    fprintf("\n⚠️ Conjunctions still exist after avoidance! Check your ΔV.\n");
+    fprintf("\n️ Conjunctions still exist after avoidance! Check your ΔV.\n");
     disp(conjs_after);
 end
 

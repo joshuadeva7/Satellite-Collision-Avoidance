@@ -76,7 +76,7 @@ function conjs = findConjunctions(sc, mainSat, targets, dMinTarget)
     end
 
     if isempty(results)
-        fprintf("✅ No conjunctions found.\n");
+        fprintf(" No conjunctions found.\n");
         conjs = [];
     else
         conjs = cell2table(results, ...

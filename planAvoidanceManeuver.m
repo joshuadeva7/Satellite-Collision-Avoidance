@@ -52,6 +52,6 @@ satAvoid.MarkerColor = "blue";
 satAvoid.Orbit.LineColor = "blue";
 satAvoid.LabelFontColor = "blue";
 
-fprintf("✅ Avoidance satellite created: %s\n", satAvoid.Name);
+fprintf(" Avoidance satellite created: %s\n", satAvoid.Name);
 
 end
